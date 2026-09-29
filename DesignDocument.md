@@ -68,7 +68,7 @@ Scrum Roles and Responsibilities
 
 Product Owner
 
-Scrum Master
+Scrum Master: Ely Bush
 
 Development Team
 
