@@ -18,27 +18,27 @@ Functional Requirements
 
 Requirement 1
 
-Given [Prerequisite]
+Given a user is registered with a medical network
 
-When [Series of Steps]
+When they log into the HealthHub application
 
-Then [Expected Result]
+Then they are able to view their healthcare data and schedule appointments.
 
 Requirement 2
 
-Given [Prerequisite]
+Given the user has an upcoming appointment
 
-When [Series of Steps]
+When they log into the HealthHub application
 
-Then [Expected Result]
+Then they can see the appointment information and reschedule if necessary.
 
 Requirement 3
 
-Given [Prerequisite]
+Given the user has been prescribed new medication
 
-When [Series of Steps]
+When they go into the medications tab within the application
 
-Then [Expected Result]
+Then they can see the medication information, expected shipment dates, and instructions on how to take it.
 
 Storyboard (Screen Mockups)
 
