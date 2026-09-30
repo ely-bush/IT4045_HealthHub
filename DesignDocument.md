@@ -42,7 +42,8 @@ Then they can see the medication information, expected shipment dates, and instr
 
 **Storyboard (Screen Mockups):**
 
-![UML Class Diagram](HealthHub_Mockup.png)
+![UML Class Diagram]<img width="1017" height="778" alt="healthHubMockup" src="https://github.com/user-attachments/assets/73399064-e611-4057-aca6-ab41ae6aeaaf" />
+
 
 **Class Diagram (UML):**
 
