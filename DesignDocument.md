@@ -84,6 +84,10 @@ Allows synchronization of patient records to unify fragmented data sources.
 
 **Architecture and Components (Diagram):**
 
+<img width="1920" height="1080" alt="Browser Thymeleaf + Bootstrap" src="https://github.com/user-attachments/assets/d7d9bdc8-ac6b-4dce-bd6c-2f85ef119ba2" />
+
+
+
 **Scrum Roles and Responsibilities:**
 
 Product Owner:
