@@ -86,7 +86,11 @@ Allows synchronization of patient records to unify fragmented data sources.
 
 <img width="1920" height="1080" alt="Browser Thymeleaf + Bootstrap" src="https://github.com/user-attachments/assets/d7d9bdc8-ac6b-4dce-bd6c-2f85ef119ba2" />
 
-
+**Browser:** The pages the user sees, built with Thymeleaf and Bootstrap
+**Controllers:** Takes in user input
+**Services:** Handles the logic
+**Repositories:** Save and loud our six classes using Spring data JPA
+**Database:** Stores all of our data in one place
 
 **Scrum Roles and Responsibilities:**
 
