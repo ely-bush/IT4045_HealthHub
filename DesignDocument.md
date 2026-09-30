@@ -95,11 +95,11 @@ Allows synchronization of patient records to unify fragmented data sources.
 
 **Scrum Roles and Responsibilities:**
 
-Product Owner:
+Product Owner: Kyle Rosa
 
 Scrum Master: Ely Bush
 
-Development Team:
+Development Team: Morgan Montgomery, Deshyah Anderson, Paul Morris
 
 **GitHub Project Link:**
 
