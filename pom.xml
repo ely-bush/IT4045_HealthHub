@@ -156,8 +156,7 @@
                     <!--Change the localhost port number to match your database-->
                     <url>jdbc:mysql://localhost:3307/health_hub?createDatabaseIfNotExist=true</url>
                     <user>root</user>
-                    <!--Add your Password-->
-                    <password>j959GGtsO5</password>
+                    <password></password>
                     <cleanDisabled>false</cleanDisabled>
                 </configuration>
             </plugin>
