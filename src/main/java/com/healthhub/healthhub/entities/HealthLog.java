@@ -19,7 +19,7 @@ public class HealthLog {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "condition", length = 255, nullable = false)
+    @Column(name = "condition_name", length = 255, nullable = false)
     private String condition;
 
     @Column(name = "symptoms", columnDefinition = "TEXT")
