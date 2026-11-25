@@ -3,97 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HealthHub</title>
-    <link rel="stylesheet" href="style.css">
+    <title>HealthHub Dashboard</title>
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<h1>HealthHub Users</h1>
+<div class="container">
 
-<h2>Create User</h2>
+    <header>
+        <h1>HealthHub Dashboard</h1>
+        <p>Manage Users, Appointments, Medications, Providers, and Health Logs</p>
+    </header>
 
-<label for="name">Name:</label><input
-        type="text"
-        id="name"
-        placeholder="Name">
+    <!-- USERS -->
 
-<label for="email">Email:</label><input
-        type="email"
-        id="email"
-        placeholder="Email">
+    <section class="card">
 
-<button onclick="createUser()">
-    Create User
-</button>
+        <h2>Users</h2>
 
-<hr>
+        <div class="form-group">
 
-<h2>Users</h2>
+            <input
+                    type="text"
+                    id="userName"
+                    placeholder="Name">
 
-<button onclick="loadUsers()">
-    Refresh Users
-</button>
+            <input
+                    type="email"
+                    id="userEmail"
+                    placeholder="Email">
 
-<ul id="userList"></ul>
+            <button onclick="createUser()">
+                Add User
+            </button>
 
-<script>
+            <button onclick="loadUsers()">
+                Refresh
+            </button>
 
-    async function loadUsers() {
+        </div>
 
-        const response = await fetch('/users');
+        <table>
 
-        const users = await response.json();
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
 
-        const list =
-            document.getElementById('userList');
+            <tbody id="userTable">
+            </tbody>
 
-        list.innerHTML = '';
+        </table>
 
-        users.forEach(user => {
+        <div id="editUserPanel" class="edit-panel">
 
-            const item =
-                document.createElement('li');
+            <h3>Edit User</h3>
 
-            item.innerHTML = `
-                <strong>${user.name}</strong>
-                (${user.email})
-            `;
+            <input
+                    type="hidden"
+                    id="editUserId">
 
-            list.appendChild(item);
-        });
-    }
+            <label for="editUserName">
+                Name
+            </label>
 
-    async function createUser() {
+            <input
+                    type="text"
+                    id="editUserName">
 
-        const user = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value
-        };
+            <label for="editUserEmail">
+                Email
+            </label>
 
-        const response = await fetch('/users', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(user)
-        });
+            <input
+                    type="email"
+                    id="editUserEmail">
 
-        if (response.ok) {
+            <div class="button-row">
 
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
+                <button onclick="saveUserChanges()">
+                    Save Changes
+                </button>
 
-            loadUsers();
+                <button onclick="closeEditUser()">
+                    Cancel
+                </button>
 
-        } else {
+            </div>
 
-            alert('Unable to create user');
-        }
-    }
+        </div>
 
-    loadUsers();
+    </section>
 
-</script>
+    <!-- APPOINTMENTS -->
+
+    <section class="card">
+
+        <h2>Appointments</h2>
+
+        <div class="form-group">
+
+            <input
+                    type="datetime-local"
+                    id="appointmentDateTime">
+
+            <input
+                    type="text"
+                    id="appointmentLocation"
+                    placeholder="Location">
+
+            <input
+                    type="text"
+                    id="appointmentNotes"
+                    placeholder="Notes">
+
+            <input
+                    type="text"
+                    id="appointmentUserId"
+                    placeholder="User ID">
+
+            <button onclick="createAppointment()">
+                Add Appointment
+            </button>
+
+            <button onclick="loadAppointments()">
+                Refresh
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Date/Time</th>
+                <th>Location</th>
+                <th>Notes</th>
+                <th>User ID</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody id="appointmentTable">
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- MEDICATIONS -->
+
+    <section class="card">
+
+        <h2>Medications</h2>
+
+        <div class="form-group">
+
+            <input
+                    type="text"
+                    id="medicationName"
+                    placeholder="Medication Name">
+
+            <input
+                    type="text"
+                    id="medicationDosage"
+                    placeholder="Dosage">
+
+            <input
+                    type="text"
+                    id="medicationRefill"
+                    placeholder="Refill Schedule">
+
+            <input
+                    type="text"
+                    id="medicationInstructions"
+                    placeholder="Instructions">
+
+            <input
+                    type="text"
+                    id="medicationUserId"
+                    placeholder="User ID">
+
+            <button onclick="createMedication()">
+                Add Medication
+            </button>
+
+            <button onclick="loadMedications()">
+                Refresh
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Dosage</th>
+                <th>Refill Schedule</th>
+                <th>User ID</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody id="medicationTable">
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- PROVIDERS -->
+
+    <section class="card">
+
+        <h2>Providers</h2>
+
+        <div class="form-group">
+
+            <input
+                    type="text"
+                    id="providerName"
+                    placeholder="Provider Name">
+
+            <input
+                    type="text"
+                    id="providerSpecialty"
+                    placeholder="Specialty">
+
+            <input
+                    type="text"
+                    id="providerContact"
+                    placeholder="Contact Info">
+
+            <input
+                    type="text"
+                    id="providerUserId"
+                    placeholder="User ID">
+
+            <button onclick="createProvider()">
+                Add Provider
+            </button>
+
+            <button onclick="loadProviders()">
+                Refresh
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Specialty</th>
+                <th>Contact</th>
+                <th>User ID</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody id="providerTable">
+            </tbody>
+
+        </table>
+
+    </section>
+
+    <!-- HEALTH LOGS -->
+
+    <section class="card">
+
+        <h2>Health Logs</h2>
+
+        <div class="form-group">
+
+            <input
+                    type="text"
+                    id="healthCondition"
+                    placeholder="Condition">
+
+            <input
+                    type="text"
+                    id="healthSymptoms"
+                    placeholder="Symptoms">
+
+            <input
+                    type="text"
+                    id="healthFamilyHistory"
+                    placeholder="Family History">
+
+            <input
+                    type="text"
+                    id="healthUserId"
+                    placeholder="User ID">
+
+            <button onclick="createHealthLog()">
+                Add Health Log
+            </button>
+
+            <button onclick="loadHealthLogs()">
+                Refresh
+            </button>
+
+        </div>
+
+        <table>
+
+            <thead>
+            <tr>
+                <th>Condition</th>
+                <th>Symptoms</th>
+                <th>Family History</th>
+                <th>User ID</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+
+            <tbody id="healthLogTable">
+            </tbody>
+
+        </table>
+
+    </section>
+
+</div>
+
+<script src="js/users.js"></script>
+<script src="js/appointments.js"></script>
+<script src="js/medications.js"></script>
+<script src="js/providers.js"></script>
+<script src="js/healthlogs.js"></script>
 
 </body>
 </html>
